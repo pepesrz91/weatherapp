@@ -8,5 +8,4 @@ setTimeout(()=>{
 setTimeout(()=>{
   console.log('Hello Fuckaaaaaaaa!');
 },)
-
 console.log('Finishing App');
