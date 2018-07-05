@@ -7,12 +7,15 @@ const getWeather = (lat,long,callback)=>{
     json:true
   },(error,response,body)=>{
     if (error) {
-      console.log('Unable to connect to Forecaste.ios server');
+      callback('Unable to connect to Forecaste.ios server')
     }else if (response.statusCode === 404)  {
+      callback('Unable to fetch the weather')
       console.log('Unable to fetch the weather');
     }else if (response.statusCode === 200) {
-      console.log('Everything working awesome!!!');
-      console.log(JSON.stringify(body.currently,undefined,2));
+      //callback('No errors found!');
+      callback(undefined,body.currently);
+      //console.log('Everything working awesome!!!');
+
     }
 
   });

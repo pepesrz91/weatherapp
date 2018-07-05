@@ -12,13 +12,13 @@ a: {
     string:true
   },
 long: {
-  demand:true,
+  demand:false,
   alias:'longitud',
   describe:'longitud to fetch weather',
   int:true
 },
 lat: {
-  demnand:true,
+  demnand:false,
   alias:'latitude',
   describe:'Latitude to fetch weather',
   int:true
@@ -33,12 +33,21 @@ geocode.geocodeAddress(arg.a,(errorMessage,results)=>{
     console.log(errorMessage);
   }else {
     //console.log(results);
-    console.log(JSON.stringify(results,undefined,2));
+    //console.log(results);
+    console.log(JSON.stringify(results.address,undefined,2));
     //sconsole.log(results.);
+    weather.getWeather(results.latitude,results.longitud,(error,weatherResponse)=>{
+      if (error) {
+        console.log(error);
+      }else{
+        //console.log(error);
+        console.log(`It's currently ${weatherResponse.temperature} but it feels like ${weatherResponse.apparentTemperature}`);
+      }
+    });
   }
 });
 
-weather.getWeather(arg.long,arg.lat,()=>{});
+
 
 //API KEY DARK SKY 152f487d54c1bbd103842b4651636ca7
 //EXAMPLE FOR BROWSER
