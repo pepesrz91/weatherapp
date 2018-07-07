@@ -10,12 +10,14 @@ var asyncAdd = (a,b)=>{
   });
 };
 
-asyncAdd('Hola',456).then((res)=>{
+asyncAdd(5,7).then((res)=>{
   console.log('We got some numbers!');
   console.log(`The sum is ${res}`);
-},(errorMessage)=>{
-  console.log(`Only numbers you dummy!`);
-  console.log(`${errorMessage}`);
+  return asyncAdd(res,7)
+}).then((res)=>{
+  console.log('Should be 45',res);
+}).catch((errorMessage)=>{
+  console.log(errorMessage);
 });
 // var somePromise = new Promise((resolve,reject)=>{
 //   setTimeout(()=>{
